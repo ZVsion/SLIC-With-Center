@@ -25,15 +25,15 @@ print("time:" + str((endtime - starttime).seconds))
 n_seg = np.amax(segments) + 1
 num_seg = np.zeros(n_seg)
 
-# for x in range(0, image.shape[0]):
-#     for y in range(0, image.shape[1]):
-#         num_seg[segments[x, y]] += 1
-# ave_LAB = np.zeros((n_seg, 3), dtype=np.float)
-# for x in range(0, image.shape[0]):
-#     for y in range(0, image.shape[1]):
-#         ave_LAB[segments[x, y]] += image[x, y]
-# for i in range(0, n_seg):
-#     ave_LAB[i] /= num_seg[i]
+for x in range(0, image.shape[0]):
+    for y in range(0, image.shape[1]):
+        num_seg[segments[x, y]] += 1
+ave_LAB = np.zeros((n_seg, 3), dtype=np.float)
+for x in range(0, image.shape[0]):
+    for y in range(0, image.shape[1]):
+        ave_LAB[segments[x, y]] += image[x, y]
+for i in range(0, n_seg):
+    ave_LAB[i] /= num_seg[i]
 #
 # count = 0
 # for i in range(len(superpixel_center)):

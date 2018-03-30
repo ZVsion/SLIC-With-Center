@@ -111,8 +111,8 @@ def _slic_cython(double[:, :, :, ::1] image_zyx,
     cdef Py_ssize_t[::1] ddz = np.array((0, 0, 0, 0, 1, -1), dtype=np.intp)
     cdef Py_ssize_t zz, yy, xx
     cdef Py_ssize_t label = 0
-    cdef int[:, ::1] adj = -1 * np.ones((n_segments, n_segments), dtype=np.int)
-    cdef int[::1] top = np.zeros(n_segments, dtype=np.int)
+    cdef long[:, ::1] adj = -1 * np.ones((n_segments, n_segments), dtype=np.int)
+    cdef long[::1] top = np.zeros(n_segments, dtype=np.int)
     cdef int ii
     
     with nogil:
@@ -272,8 +272,8 @@ def _enforce_label_connectivity_cython(Py_ssize_t[:, :, ::1] segments,
 
     cdef Py_ssize_t[:, ::1] coord_list = np.zeros((max_size, 3), dtype=np.intp)
     
-    cdef int[:, ::1] adj = -1 * np.ones((depth * height * width / min_size, depth * height * width / min_size), dtype=np.int)
-    cdef int[::1] top = np.zeros(depth * height * width / min_size, dtype=np.int)
+    cdef long[:, ::1] adj = -1 * np.ones((depth * height * width / min_size, depth * height * width / min_size), dtype=np.int)
+    cdef long[::1] top = np.zeros(depth * height * width / min_size, dtype=np.int)
     cdef int ii
     cdef char change
     
